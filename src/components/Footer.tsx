@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="bg-brand text-white">
       <div className="page-shell grid gap-10 py-14 md:grid-cols-3">
         <div>
-          <Image src={assetPath("/images/brand/logo.jpeg")} alt="CleanHive Company" width={190} height={96} className="h-auto w-48 rounded-2xl object-contain" />
+          <Image src={assetPath("/images/brand/logo.jpeg")} alt="CleanHive Company" width={144} height={73} className="h-auto w-36 rounded-xl object-contain" />
           <p className="mt-4 max-w-sm leading-7 text-white/70">
             Thoughtful residential and commercial cleaning across Central Florida.
           </p>

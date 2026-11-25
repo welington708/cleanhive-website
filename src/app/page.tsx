@@ -26,45 +26,6 @@ export default function HomePage() {
       <section className="section-pad bg-cream">
         <div className="page-shell">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow">Google Reviews</p>
-            <h2 className="mt-3 text-4xl font-bold md:text-5xl">What our clients are saying</h2>
-            <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-gold">
-              <div className="flex" aria-label="5 out of 5 stars">{Array.from({ length: 5 }).map((_, index) => <StarIcon key={index} />)}</div>
-              <span className="font-bold text-ink">Excellent · 5.0 on Google · 17 reviews</span>
-            </div>
-          </div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {googleReviews.map((review) => (
-              <figure key={review.name} className="card flex h-full flex-col p-7">
-                <div className="flex text-gold">{Array.from({ length: 5 }).map((_, index) => <StarIcon key={index} className="h-4 w-4" />)}</div>
-                <blockquote className="mt-5 flex-1 text-base leading-7 text-slate-600">“{review.text}”</blockquote>
-                <figcaption className="mt-6 border-t border-slate-100 pt-4"><p className="font-bold">{review.name}</p><p className="mt-1 text-xs text-slate-500">{review.date} · Google Review</p></figcaption>
-              </figure>
-            ))}
-          </div>
-          <div className="mt-8 text-center"><a href={siteConfig.googleReviewsUrl} target="_blank" rel="noreferrer" className="button-gold">Read all reviews on Google</a></div>
-        </div>
-      </section>
-
-      <section className="section-pad bg-white">
-        <div className="page-shell grid items-center gap-12 lg:grid-cols-[1.04fr_.96fr]">
-          <div className="relative min-h-[390px] overflow-hidden rounded-[2rem] bg-cream shadow-xl md:min-h-[520px]">
-            <Image src={assetPath("/images/home/clean-home-promo.jpg")} alt="A bright, clean living room presented by CleanHive" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 52vw" />
-          </div>
-          <div>
-            <p className="eyebrow">Who we are</p>
-            <h2 className="mt-3 text-4xl font-bold md:text-5xl">About Clean Hive Company</h2>
-            <div className="mt-5 h-1 w-20 rounded-full bg-gold" />
-            <p className="mt-7 text-lg leading-8 text-slate-600">CleanHive is a local cleaning company serving homes, rentals, and businesses across Central Florida. Our goal is to make every service clear, thoughtful, and tailored to the space.</p>
-            <p className="mt-4 text-lg leading-8 text-slate-600">We believe in trust, transparency, and the difference a carefully cleaned environment can make in everyday life.</p>
-            <Link href="/about" className="button-gold mt-8">Learn more about us</Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-pad bg-cream">
-        <div className="page-shell">
-          <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow">Cleaning that fits the moment</p>
             <h2 className="mt-3 text-4xl font-bold md:text-5xl">From weekly upkeep to a complete reset</h2>
             <p className="mt-5 text-lg leading-8 text-slate-600">Choose the service that matches your space. We will confirm scope, priorities, and timing before work begins.</p>
@@ -100,6 +61,45 @@ export default function HomePage() {
               ].map(([number, label]) => <div key={number} className="rounded-2xl bg-cream p-4"><p className="text-2xl font-bold text-gold">{number}</p><p className="mt-1 text-sm font-bold">{label}</p></div>)}
             </div>
             <Link href="/our-work" className="button-gold mt-8">See our work</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad bg-cream">
+        <div className="page-shell">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow">Google Reviews</p>
+            <h2 className="mt-3 text-4xl font-bold md:text-5xl">What our clients are saying</h2>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-gold">
+              <div className="flex" aria-label="5 out of 5 stars">{Array.from({ length: 5 }).map((_, index) => <StarIcon key={index} />)}</div>
+              <span className="font-bold text-ink">Excellent · 5.0 on Google · 17 reviews</span>
+            </div>
+          </div>
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+            {googleReviews.map((review) => (
+              <figure key={review.name} className="card flex h-full flex-col p-7">
+                <div className="flex text-gold">{Array.from({ length: 5 }).map((_, index) => <StarIcon key={index} className="h-4 w-4" />)}</div>
+                <blockquote className="mt-5 flex-1 text-base leading-7 text-slate-600">“{review.text}”</blockquote>
+                <figcaption className="mt-6 border-t border-slate-100 pt-4"><p className="font-bold">{review.name}</p><p className="mt-1 text-xs text-slate-500">{review.date} · Google Review</p></figcaption>
+              </figure>
+            ))}
+          </div>
+          <div className="mt-8 text-center"><a href={siteConfig.googleReviewsUrl} target="_blank" rel="noreferrer" className="button-gold">Read all reviews on Google</a></div>
+        </div>
+      </section>
+
+      <section className="section-pad bg-white">
+        <div className="page-shell grid items-center gap-12 lg:grid-cols-[1.04fr_.96fr]">
+          <div className="relative min-h-[390px] overflow-hidden rounded-[2rem] bg-cream shadow-xl md:min-h-[520px]">
+            <Image src={assetPath("/images/home/clean-home-promo.jpg")} alt="A bright, clean living room presented by CleanHive" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 52vw" />
+          </div>
+          <div>
+            <p className="eyebrow">Who we are</p>
+            <h2 className="mt-3 text-4xl font-bold md:text-5xl">About Clean Hive Company</h2>
+            <div className="mt-5 h-1 w-20 rounded-full bg-gold" />
+            <p className="mt-7 text-lg leading-8 text-slate-600">CleanHive is a local cleaning company serving homes, rentals, and businesses across Central Florida. Our goal is to make every service clear, thoughtful, and tailored to the space.</p>
+            <p className="mt-4 text-lg leading-8 text-slate-600">We believe in trust, transparency, and the difference a carefully cleaned environment can make in everyday life.</p>
+            <Link href="/about" className="button-gold mt-8">Learn more about us</Link>
           </div>
         </div>
       </section>
