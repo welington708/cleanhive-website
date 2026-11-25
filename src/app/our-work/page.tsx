@@ -13,18 +13,24 @@ const results = [11, 12, 13, 14, 15, 16, 17, 18];
 export default function OurWorkPage() {
   return (
     <>
-      <PageHero eyebrow="Our Work" title="Real spaces. Visible progress." description="A growing gallery of cleaning and organization work completed by CleanHive." />
+      <PageHero
+        eyebrow="Our Work"
+        title="Our Work Speaks for Itself"
+        description="Every job we take on is a commitment to quality. Browse through a selection of our recent residential and commercial cleaning projects across Central Florida."
+        cta={false}
+        compact
+      />
       <section className="section-pad bg-cream">
         <div className="page-shell">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow">Project gallery</p>
-            <h2 className="mt-3 text-4xl font-bold">Before, after, and everything in between</h2>
-            <p className="mt-5 leading-8 text-slate-600">These are the project images currently supplied for the rebuild. Higher-resolution originals will replace social-media screenshots as they become available.</p>
+            <p className="eyebrow">Real results</p>
+            <h2 className="mt-3 text-4xl font-bold">Professional Cleaning Results Across Orlando &amp; Beyond</h2>
+            <p className="mt-5 leading-8 text-slate-600">At Clean Hive Company, we take pride in delivering spotless results on every single job — from deep cleans in Orlando to move-out services in Daytona Beach. Our team of trained professionals uses industry-grade equipment and eco-conscious products to restore homes and commercial spaces to their best condition. The photos below represent real work completed by our team for real clients across Central Florida.</p>
           </div>
-          <div className="mt-12 columns-1 gap-5 sm:columns-2 lg:columns-3">
+          <div className="mt-12 grid grid-cols-2 items-start gap-3 md:gap-6">
             {results.map((number, index) => (
-              <figure key={number} className="mb-5 break-inside-avoid overflow-hidden rounded-3xl bg-white shadow-lg">
-                <Image src={assetPath(`/images/work/result-${number}.png`)} alt={`CleanHive project result ${index + 1}`} width={800} height={900} className="h-auto w-full" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+              <figure key={number} className="overflow-hidden rounded-2xl bg-white shadow-lg md:rounded-3xl">
+                <Image src={assetPath(`/images/work/result-${number}.png`)} alt={`CleanHive cleaning result ${index + 1}`} width={800} height={900} className="h-auto w-full" sizes="(max-width: 768px) 50vw, 50vw" />
               </figure>
             ))}
           </div>
