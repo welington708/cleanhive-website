@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  --brand: #02566a;
+  --brand-dark: #013e4d;
+  --gold: #eab75e;
+  --cream: #f7f5f0;
+  --ink: #1a1a2e;
+}
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-gold: var(--gold);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
+a, button, input, select, textarea { outline-color: var(--gold); outline-offset: 3px; }
+
+.page-shell { width: min(1180px, calc(100% - 2rem)); margin-inline: auto; }
+.eyebrow { font-size: .76rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--brand); }
+.button-gold { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; border-radius: .75rem; background: var(--gold); padding: .7rem 1.1rem; font-size: .875rem; font-weight: 800; color: var(--ink); transition: transform .2s, filter .2s; }
+.button-gold:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.button-outline { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; border: 1px solid rgb(255 255 255 / .45); border-radius: .75rem; padding: .7rem 1.1rem; font-size: .875rem; font-weight: 800; color: white; transition: background .2s; }
+.button-outline:hover { background: rgb(255 255 255 / .1); }
+.form-control { min-height: 46px; width: 100%; border: 1px solid #d8d5ce; border-radius: .75rem; background: #fbfaf7; padding: .72rem .85rem; font-size: 1rem; font-weight: 400; color: var(--ink); }
+.form-control:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgb(2 86 106 / .14); outline: 0; }
+.brand-pattern { background-image: radial-gradient(circle at 1px 1px, rgb(255 255 255 / .08) 1px, transparent 0); background-size: 22px 22px; }
+.section-pad { padding-block: clamp(4rem, 8vw, 7rem); }
+.card { border: 1px solid #e5e1d9; border-radius: 1.5rem; background: white; box-shadow: 0 12px 36px rgb(26 26 46 / .06); }
+.prose h2 { margin-top: 2.2rem; font-size: 1.5rem; font-weight: 800; color: var(--brand); }
+.prose p { margin-top: 1rem; line-height: 1.8; color: #475569; }
+.prose a { color: var(--brand); font-weight: 700; text-decoration: underline; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

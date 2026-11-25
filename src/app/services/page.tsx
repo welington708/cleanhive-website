@@ -1,0 +1,36 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { PageHero } from "@/components/PageHero";
+import { services } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Cleaning Services",
+  description: "Explore residential, deep, move-in, move-out, commercial, and apartment turnover cleaning services in Central Florida.",
+};
+
+export default function ServicesPage() {
+  return (
+    <>
+      <PageHero eyebrow="Services" title="The right clean for every transition" description="Routine care, detailed resets, moving support, and commercial cleaning shaped around your space." />
+      <section className="section-pad bg-cream">
+        <div className="page-shell space-y-8">
+          {services.map((service, index) => (
+            <article id={service.slug} key={service.slug} className="card grid scroll-mt-28 overflow-hidden lg:grid-cols-2">
+              <div className={`relative min-h-72 ${index % 2 ? "lg:order-2" : ""}`}>
+                <Image src={service.image} alt={`${service.title} service`} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+              </div>
+              <div className="flex flex-col justify-center p-8 md:p-12">
+                <p className="eyebrow">Service {String(index + 1).padStart(2, "0")}</p>
+                <h2 className="mt-3 text-3xl font-bold md:text-4xl">{service.title}</h2>
+                <p className="mt-5 text-lg leading-8 text-slate-600">{service.description}</p>
+                <p className="mt-4 leading-7 text-slate-500">Final scope and timing are confirmed after we learn about the property, its condition, and your priorities.</p>
+                <Link href={`/contact?service=${encodeURIComponent(service.title)}#quote-form`} className="button-gold mt-7 self-start">Get a quote</Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
