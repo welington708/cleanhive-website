@@ -47,7 +47,7 @@ export const services = [
     title: "Residential Cleaning",
     short: "Routine care that keeps your home comfortable, tidy, and ready for everyday life.",
     description:
-      "A practical recurring clean focused on frequently used rooms, floors, surfaces, kitchens, and bathrooms.",
+      "Regular cleaning offers consistent maintenance of your home. This service includes dusting, vacuuming, mopping, and wiping surfaces, ensuring your space remains clean and comfortable throughout the week.",
     image: assetPath("/images/services/residential.jpg"),
   },
   {
@@ -55,7 +55,7 @@ export const services = [
     title: "Deep Cleaning",
     short: "Detailed attention for buildup, overlooked areas, and spaces that need a fresh reset.",
     description:
-      "A more intensive service for the details that are not usually covered during routine maintenance.",
+      "A deep cleaning service provides a thorough cleaning of every corner of your space, targeting areas often missed in regular cleanings. It includes dusting, scrubbing, and disinfecting, leaving your home spotless.",
     image: assetPath("/images/services/deep-cleaning.png"),
   },
   {
@@ -63,7 +63,7 @@ export const services = [
     title: "Move-In Cleaning",
     short: "Start in a space that feels clean, welcoming, and ready for your belongings.",
     description:
-      "Cleaning for an empty or nearly empty home before furniture, boxes, and daily life move in.",
+      "Move-in cleaning ensures your new home is clean and ready for you. It involves cleaning all surfaces, floors, and hidden areas, including appliances and cabinets, to give you a fresh start in your new place.",
     image: assetPath("/images/services/move-in.png"),
   },
   {
@@ -71,7 +71,7 @@ export const services = [
     title: "Move-Out Cleaning",
     short: "Leave the property refreshed for its next resident, walkthrough, or handoff.",
     description:
-      "A thorough clean designed for transitions, with scope tailored to the condition of the property.",
+      "Move-out cleaning focuses on leaving your old home in pristine condition for the next residents. This service includes cleaning the entire house, including floors, windows, and appliances, ensuring everything is spotless.",
     image: assetPath("/images/services/move-out.webp"),
   },
   {
@@ -79,7 +79,7 @@ export const services = [
     title: "Commercial Cleaning",
     short: "Flexible cleaning support for offices, shared areas, and commercial environments.",
     description:
-      "A service plan shaped around the space, traffic, priorities, and operating schedule of your business.",
+      "Commercial cleaning caters to offices and business spaces. It includes cleaning and sanitizing workspaces, bathrooms, floors, and common areas to create a hygienic environment for employees and visitors.",
     image: assetPath("/images/services/commercial.webp"),
   },
   {
@@ -87,7 +87,7 @@ export const services = [
     title: "Apartment Turnover",
     short: "Prepare rental units for the next tenant with a focused, efficient reset.",
     description:
-      "Turnover cleaning for property managers, landlords, and residents between occupancies.",
+      "Apartment turnover cleaning prepares rental properties for new tenants. It includes deep cleaning of every room, sanitizing bathrooms, kitchens, and floors, ensuring the apartment is spotless and move-in ready.",
     image: assetPath("/images/services/turnover.webp"),
   },
 ] as const;

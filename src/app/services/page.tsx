@@ -12,7 +12,13 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <PageHero eyebrow="Services" title="The right clean for every transition" description="Routine care, detailed resets, moving support, and commercial cleaning shaped around your space." />
+      <PageHero
+        eyebrow="Services"
+        title="Our Cleaning Services"
+        description="Comprehensive cleaning solutions tailored to your specific needs, delivered by our team of trained professionals."
+        cta={false}
+        compact
+      />
       <section className="section-pad bg-cream">
         <div className="page-shell space-y-8">
           {services.map((service, index) => (
@@ -21,10 +27,8 @@ export default function ServicesPage() {
                 <Image src={service.image} alt={`${service.title} service`} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
               </div>
               <div className="flex flex-col justify-center p-8 md:p-12">
-                <p className="eyebrow">Service {String(index + 1).padStart(2, "0")}</p>
-                <h2 className="mt-3 text-3xl font-bold md:text-4xl">{service.title}</h2>
+                <h2 className="text-3xl font-bold md:text-4xl">{service.slug === "apartment-turnover" ? "Apartment Turnover Cleaning" : service.title}</h2>
                 <p className="mt-5 text-lg leading-8 text-slate-600">{service.description}</p>
-                <p className="mt-4 leading-7 text-slate-500">Final scope and timing are confirmed after we learn about the property, its condition, and your priorities.</p>
                 <Link href="/contact#quote-form" className="button-gold mt-7 self-start">Get a quote</Link>
               </div>
             </article>
