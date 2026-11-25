@@ -8,8 +8,7 @@ export const metadata: Metadata = {
   description: "Request a free cleaning estimate from CleanHive Company in Central Florida.",
 };
 
-export default async function ContactPage({ searchParams }: { searchParams: Promise<{ service?: string; city?: string }> }) {
-  const params = await searchParams;
+export default function ContactPage() {
   return (
     <>
       <PageHero eyebrow="Contact" title="Let's talk about your space" description="Tell us what you need, where the property is, and the best way to reach you." cta={false} />
@@ -32,8 +31,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
             </div>
           </aside>
           <div id="quote-form" className="scroll-mt-28">
-            {params.city && <p className="mb-4 rounded-xl bg-white px-4 py-3 text-sm text-slate-600">Area selected: <strong>{params.city}</strong></p>}
-            <QuoteForm defaultService={params.service || ""} />
+            <QuoteForm />
           </div>
         </div>
       </section>

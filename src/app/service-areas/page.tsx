@@ -20,7 +20,7 @@ export default function ServiceAreasPage() {
                 <p className="eyebrow">{area.county}</p>
                 <h2 className="mt-3 text-2xl font-bold">{area.city}</h2>
                 <p className="mt-3 leading-7 text-slate-600">Residential, moving, turnover, and commercial cleaning may be available in this area.</p>
-                <Link href={`/contact?city=${encodeURIComponent(area.city)}#quote-form`} className="mt-5 inline-block font-bold text-brand">Check availability →</Link>
+                <Link href="/contact#quote-form" className="mt-5 inline-block font-bold text-brand">Check availability →</Link>
               </article>
             ))}
           </div>

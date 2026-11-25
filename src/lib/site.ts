@@ -1,3 +1,5 @@
+export const assetPath = (path: string) => `${process.env.NEXT_PUBLIC_BASE_PATH || ""}${path}`;
+
 export const siteConfig = {
   name: "CleanHive Company",
   shortName: "CleanHive",
@@ -46,7 +48,7 @@ export const services = [
     short: "Routine care that keeps your home comfortable, tidy, and ready for everyday life.",
     description:
       "A practical recurring clean focused on frequently used rooms, floors, surfaces, kitchens, and bathrooms.",
-    image: "/images/services/residential.jpg",
+    image: assetPath("/images/services/residential.jpg"),
   },
   {
     slug: "deep-cleaning",
@@ -54,7 +56,7 @@ export const services = [
     short: "Detailed attention for buildup, overlooked areas, and spaces that need a fresh reset.",
     description:
       "A more intensive service for the details that are not usually covered during routine maintenance.",
-    image: "/images/services/deep-cleaning.png",
+    image: assetPath("/images/services/deep-cleaning.png"),
   },
   {
     slug: "move-in-cleaning",
@@ -62,7 +64,7 @@ export const services = [
     short: "Start in a space that feels clean, welcoming, and ready for your belongings.",
     description:
       "Cleaning for an empty or nearly empty home before furniture, boxes, and daily life move in.",
-    image: "/images/services/move-in.png",
+    image: assetPath("/images/services/move-in.png"),
   },
   {
     slug: "move-out-cleaning",
@@ -70,7 +72,7 @@ export const services = [
     short: "Leave the property refreshed for its next resident, walkthrough, or handoff.",
     description:
       "A thorough clean designed for transitions, with scope tailored to the condition of the property.",
-    image: "/images/services/move-out.webp",
+    image: assetPath("/images/services/move-out.webp"),
   },
   {
     slug: "commercial-cleaning",
@@ -78,7 +80,7 @@ export const services = [
     short: "Flexible cleaning support for offices, shared areas, and commercial environments.",
     description:
       "A service plan shaped around the space, traffic, priorities, and operating schedule of your business.",
-    image: "/images/services/commercial.webp",
+    image: assetPath("/images/services/commercial.webp"),
   },
   {
     slug: "apartment-turnover",
@@ -86,7 +88,7 @@ export const services = [
     short: "Prepare rental units for the next tenant with a focused, efficient reset.",
     description:
       "Turnover cleaning for property managers, landlords, and residents between occupancies.",
-    image: "/images/services/turnover.webp",
+    image: assetPath("/images/services/turnover.webp"),
   },
 ] as const;
 

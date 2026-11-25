@@ -25,7 +25,7 @@ export default function ServicesPage() {
                 <h2 className="mt-3 text-3xl font-bold md:text-4xl">{service.title}</h2>
                 <p className="mt-5 text-lg leading-8 text-slate-600">{service.description}</p>
                 <p className="mt-4 leading-7 text-slate-500">Final scope and timing are confirmed after we learn about the property, its condition, and your priorities.</p>
-                <Link href={`/contact?service=${encodeURIComponent(service.title)}#quote-form`} className="button-gold mt-7 self-start">Get a quote</Link>
+                <Link href="/contact#quote-form" className="button-gold mt-7 self-start">Get a quote</Link>
               </div>
             </article>
           ))}

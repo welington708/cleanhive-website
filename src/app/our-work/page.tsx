@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
+import { assetPath } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Our Work",
@@ -23,7 +24,7 @@ export default function OurWorkPage() {
           <div className="mt-12 columns-1 gap-5 sm:columns-2 lg:columns-3">
             {results.map((number, index) => (
               <figure key={number} className="mb-5 break-inside-avoid overflow-hidden rounded-3xl bg-white shadow-lg">
-                <Image src={`/images/work/result-${number}.png`} alt={`CleanHive project result ${index + 1}`} width={800} height={900} className="h-auto w-full" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                <Image src={assetPath(`/images/work/result-${number}.png`)} alt={`CleanHive project result ${index + 1}`} width={800} height={900} className="h-auto w-full" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
               </figure>
             ))}
           </div>

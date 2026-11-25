@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPinIcon, StarIcon } from "@/components/Icons";
 import { QuoteForm } from "@/components/QuoteForm";
-import { googleReviews, serviceAreas, services, siteConfig } from "@/lib/site";
+import { assetPath, googleReviews, serviceAreas, services, siteConfig } from "@/lib/site";
 
 export default function HomePage() {
   return (
@@ -49,7 +49,7 @@ export default function HomePage() {
       <section className="section-pad bg-white">
         <div className="page-shell grid items-center gap-12 lg:grid-cols-[1.04fr_.96fr]">
           <div className="relative min-h-[390px] overflow-hidden rounded-[2rem] bg-cream shadow-xl md:min-h-[520px]">
-            <Image src="/images/home/clean-home-promo.jpg" alt="A bright, clean living room presented by CleanHive" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 52vw" />
+            <Image src={assetPath("/images/home/clean-home-promo.jpg")} alt="A bright, clean living room presented by CleanHive" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 52vw" />
           </div>
           <div>
             <p className="eyebrow">Who we are</p>
@@ -87,8 +87,8 @@ export default function HomePage() {
       <section className="section-pad bg-white">
         <div className="page-shell grid items-center gap-12 lg:grid-cols-2">
           <div className="grid grid-cols-2 gap-4">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl"><Image src="/images/home/bathroom-detail-before-after.png" alt="Before and after cleaning result" fill className="object-cover" sizes="50vw" /></div>
-            <div className="relative mt-10 aspect-[4/5] overflow-hidden rounded-3xl"><Image src="/images/home/bathtub-before-after.png" alt="Bathtub before and after cleaning" fill className="object-cover" sizes="50vw" /></div>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl"><Image src={assetPath("/images/home/bathroom-detail-before-after.png")} alt="Before and after cleaning result" fill className="object-cover" sizes="50vw" /></div>
+            <div className="relative mt-10 aspect-[4/5] overflow-hidden rounded-3xl"><Image src={assetPath("/images/home/bathtub-before-after.png")} alt="Bathtub before and after cleaning" fill className="object-cover" sizes="50vw" /></div>
           </div>
           <div>
             <p className="eyebrow">Real work, visible results</p>
@@ -112,7 +112,7 @@ export default function HomePage() {
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-600">From Orlando to the beautiful coastal towns, we bring our cleaning services directly to you.</p>
           <div className="mx-auto mt-10 flex max-w-5xl flex-wrap justify-center gap-3">
             {serviceAreas.map((area) => (
-              <Link key={area.city} href={`/contact?city=${encodeURIComponent(area.city)}#quote-form`} className="flex w-full min-w-0 items-center justify-center gap-2 rounded-full border border-[#ded7ca] bg-white px-6 py-3.5 font-semibold text-ink shadow-sm transition hover:-translate-y-0.5 hover:border-gold hover:shadow-md sm:w-auto">
+              <Link key={area.city} href="/contact#quote-form" className="flex w-full min-w-0 items-center justify-center gap-2 rounded-full border border-[#ded7ca] bg-white px-6 py-3.5 font-semibold text-ink shadow-sm transition hover:-translate-y-0.5 hover:border-gold hover:shadow-md sm:w-auto">
                 <MapPinIcon className="h-5 w-5 shrink-0 text-gold" />
                 <span className="whitespace-nowrap">{area.city}</span>
               </Link>

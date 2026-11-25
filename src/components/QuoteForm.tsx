@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import { services, siteConfig } from "@/lib/site";
 
-type FormState = "idle" | "sending" | "success" | "error";
+type FormState = "idle" | "sending" | "success" | "error" | "preview";
 
 export function QuoteForm({ compact = false, defaultService = "" }: { compact?: boolean; defaultService?: string }) {
   const [state, setState] = useState<FormState>("idle");
@@ -16,6 +16,12 @@ export function QuoteForm({ compact = false, defaultService = "" }: { compact?: 
 
     const form = event.currentTarget;
     const payload = Object.fromEntries(new FormData(form).entries());
+
+    if (process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true") {
+      setState("preview");
+      setMessage("This public preview is for layout testing. Email delivery will be enabled on the server-hosted version.");
+      return;
+    }
 
     try {
       const response = await fetch("/api/quote", {
@@ -83,8 +89,8 @@ export function QuoteForm({ compact = false, defaultService = "" }: { compact?: 
         </button>
 
         {message && (
-          <div role="status" className={`rounded-xl px-4 py-3 text-sm ${state === "success" ? "bg-emerald-50 text-emerald-800" : "bg-red-50 text-red-800"}`}>
-            {message} {state === "error" && <>You can also call <a className="font-bold underline" href={`tel:${siteConfig.testPhoneHref}`}>{siteConfig.testPhoneDisplay}</a>.</>}
+          <div role="status" className={`rounded-xl px-4 py-3 text-sm ${state === "success" ? "bg-emerald-50 text-emerald-800" : state === "preview" ? "bg-sky-50 text-sky-900" : "bg-red-50 text-red-800"}`}>
+            {message} {state === "error" && <> You can also call <a className="font-bold underline" href={`tel:${siteConfig.testPhoneHref}`}>{siteConfig.testPhoneDisplay}</a>.</>}
           </div>
         )}
       </form>

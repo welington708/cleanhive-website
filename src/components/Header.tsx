@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { navigation, siteConfig } from "@/lib/site";
+import { assetPath, navigation, siteConfig } from "@/lib/site";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -15,7 +15,7 @@ export function Header() {
       <div className="page-shell flex h-20 items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-3" aria-label="CleanHive home">
           <Image
-            src="/images/brand/logo.jpeg"
+            src={assetPath("/images/brand/logo.jpeg")}
             alt="CleanHive"
             width={70}
             height={68}

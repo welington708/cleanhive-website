@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { assetPath } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -14,7 +15,7 @@ export default function AboutPage() {
       <PageHero eyebrow="About CleanHive" title="Care you can see in the details" description="A local cleaning company focused on clear communication, thoughtful service, and spaces that feel ready for life." />
       <section className="section-pad bg-white">
         <div className="page-shell grid items-center gap-12 lg:grid-cols-2">
-          <div className="relative min-h-[520px] overflow-hidden rounded-3xl bg-brand"><Image src="/images/home/about-cleanhive.jpg" alt="CleanHive home care message" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" /></div>
+          <div className="relative min-h-[520px] overflow-hidden rounded-3xl bg-brand"><Image src={assetPath("/images/home/about-cleanhive.jpg")} alt="CleanHive home care message" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" /></div>
           <div>
             <p className="eyebrow">Our approach</p>
             <h2 className="mt-3 text-4xl font-bold md:text-5xl">Cleaning built around people, not a template</h2>
