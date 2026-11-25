@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Link from "next/link";
 import { services, siteConfig } from "@/lib/site";
 
 type FormState = "idle" | "sending" | "success" | "error" | "preview";
@@ -81,7 +82,7 @@ export function QuoteForm({ compact = false, defaultService = "" }: { compact?: 
 
         <label className="flex items-start gap-3 text-xs leading-5 text-slate-600">
           <input name="consent" value="accepted" type="checkbox" required className="mt-1 h-4 w-4 accent-brand" />
-          <span>I agree that CleanHive may contact me about this estimate. See the <a className="font-semibold text-brand underline" href="/privacy-policy">Privacy Policy</a>.</span>
+          <span>I agree that CleanHive may contact me about this estimate. See the <Link className="font-semibold text-brand underline" href="/privacy-policy">Privacy Policy</Link>.</span>
         </label>
 
         <button type="submit" disabled={state === "sending"} className="button-gold min-h-12 justify-center disabled:cursor-wait disabled:opacity-70">
