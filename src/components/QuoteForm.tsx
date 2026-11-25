@@ -6,7 +6,23 @@ import { services, siteConfig } from "@/lib/site";
 
 type FormState = "idle" | "sending" | "success" | "error" | "preview";
 
-export function QuoteForm({ compact = false, defaultService = "" }: { compact?: boolean; defaultService?: string }) {
+export function QuoteForm({
+  compact = false,
+  defaultService = "",
+  eyebrow = "Free estimate",
+  title = "Tell us about your space",
+  description = "We will follow up using the contact details you provide.",
+  buttonLabel = "Request my free estimate",
+  showNotes = true,
+}: {
+  compact?: boolean;
+  defaultService?: string;
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  buttonLabel?: string;
+  showNotes?: boolean;
+}) {
   const [state, setState] = useState<FormState>("idle");
   const [message, setMessage] = useState("");
 
@@ -44,9 +60,9 @@ export function QuoteForm({ compact = false, defaultService = "" }: { compact?: 
   return (
     <div className={`rounded-3xl bg-white shadow-2xl ring-1 ring-black/5 ${compact ? "p-6" : "p-6 md:p-8"}`}>
       <div className="mb-6 border-l-4 border-gold pl-4">
-        <p className="eyebrow">Free estimate</p>
-        <h2 className="mt-1 text-2xl font-bold text-ink">Tell us about your space</h2>
-        <p className="mt-2 text-sm text-slate-600">We will follow up using the contact details you provide.</p>
+        <p className="eyebrow">{eyebrow}</p>
+        <h2 className="mt-1 text-2xl font-bold text-ink">{title}</h2>
+        <p className="mt-2 text-sm text-slate-600">{description}</p>
       </div>
 
       <form onSubmit={handleSubmit} className="grid gap-4" noValidate>
@@ -75,10 +91,12 @@ export function QuoteForm({ compact = false, defaultService = "" }: { compact?: 
           <Field label="Approx. square footage" name="squareFeet" type="number" placeholder="Optional" min="1" max="100000" />
         </div>
 
-        <label className="grid gap-2 text-sm font-semibold text-ink">
-          Notes <span className="font-normal text-slate-500">(optional)</span>
-          <textarea name="notes" rows={compact ? 3 : 4} maxLength={1500} className="form-control resize-y" placeholder="Timing, rooms, priorities, or anything else we should know." />
-        </label>
+        {showNotes && (
+          <label className="grid gap-2 text-sm font-semibold text-ink">
+            Notes <span className="font-normal text-slate-500">(optional)</span>
+            <textarea name="notes" rows={compact ? 3 : 4} maxLength={1500} className="form-control resize-y" placeholder="Timing, rooms, priorities, or anything else we should know." />
+          </label>
+        )}
 
         <label className="flex items-start gap-3 text-xs leading-5 text-slate-600">
           <input name="consent" value="accepted" type="checkbox" required className="mt-1 h-4 w-4 accent-brand" />
@@ -86,7 +104,7 @@ export function QuoteForm({ compact = false, defaultService = "" }: { compact?: 
         </label>
 
         <button type="submit" disabled={state === "sending"} className="button-gold min-h-12 justify-center disabled:cursor-wait disabled:opacity-70">
-          {state === "sending" ? "Sending…" : "Request my free estimate"}
+          {state === "sending" ? "Sending…" : buttonLabel}
         </button>
 
         {message && (
