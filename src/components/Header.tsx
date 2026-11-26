@@ -9,6 +9,12 @@ import { assetPath, navigation, siteConfig } from "@/lib/site";
 export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const normalizedPathname = (
+    basePath && pathname.startsWith(basePath) ? pathname.slice(basePath.length) : pathname
+  ).replace(/\/+$/, "") || "/";
+
+  const isActive = (href: string) => normalizedPathname === (href.replace(/\/+$/, "") || "/");
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-brand/95 text-white shadow-lg backdrop-blur">
@@ -26,15 +32,20 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
-          {navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`text-sm font-semibold transition hover:text-gold ${pathname === item.href ? "text-gold" : "text-white/90"}`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navigation.map((item) => {
+            const active = isActive(item.href);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className={`text-sm font-semibold transition hover:text-gold ${active ? "text-gold" : "text-white/90"}`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -57,16 +68,21 @@ export function Header() {
       {open && (
         <nav id="mobile-navigation" className="border-t border-white/10 bg-brand px-5 pb-6 pt-3 lg:hidden">
           <div className="mx-auto flex max-w-6xl flex-col">
-            {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="border-b border-white/10 py-3 font-semibold text-white/90"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navigation.map((item) => {
+              const active = isActive(item.href);
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                  className={`border-b border-white/10 py-3 font-semibold transition hover:text-gold ${active ? "text-gold" : "text-white/90"}`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
             <a className="button-gold mt-5 justify-center" href={`tel:${siteConfig.testPhoneHref}`}>
               Call {siteConfig.testPhoneDisplay}
             </a>
