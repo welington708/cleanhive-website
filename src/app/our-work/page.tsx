@@ -5,7 +5,7 @@ import { assetPath } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Our Work",
-  description: "Browse real cleaning and organization results supplied by CleanHive Company.",
+  description: "See real cleaning results from Clean Hive Company across Central Florida.",
 };
 
 const results = [11, 12, 13, 14, 15, 16, 17, 18];
@@ -16,7 +16,7 @@ export default function OurWorkPage() {
       <PageHero
         eyebrow="Our Work"
         title="Our Work Speaks for Itself"
-        description="Every job we take on is a commitment to quality. Browse through a selection of our recent residential and commercial cleaning projects across Central Florida."
+        description="Take a look at real results from homes and businesses across Central Florida."
         cta={false}
         compact
       />
@@ -24,8 +24,8 @@ export default function OurWorkPage() {
         <div className="page-shell">
           <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow">Real results</p>
-            <h2 className="mt-3 text-4xl font-bold">Professional Cleaning Results Across Orlando &amp; Beyond</h2>
-            <p className="mt-5 leading-8 text-slate-600">At Clean Hive Company, we take pride in delivering spotless results on every single job — from deep cleans in Orlando to move-out services in Daytona Beach. Our team of trained professionals uses industry-grade equipment and eco-conscious products to restore homes and commercial spaces to their best condition. The photos below represent real work completed by our team for real clients across Central Florida.</p>
+            <h2 className="mt-3 text-4xl font-bold">Real Cleaning Results Across Central Florida</h2>
+            <p className="mt-5 leading-8 text-slate-600">We take pride in every job, from deep cleans in Orlando to move-out services in Daytona Beach. Our trained team uses professional equipment and eco-conscious products to help homes and businesses look their best. Every photo below shows real work completed for a Clean Hive client.</p>
           </div>
           <div className="mt-12 grid grid-cols-2 items-start gap-3 md:gap-6">
             {results.map((number, index) => (

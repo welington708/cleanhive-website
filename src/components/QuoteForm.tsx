@@ -9,10 +9,10 @@ type FormState = "idle" | "sending" | "success" | "error" | "preview";
 export function QuoteForm({
   compact = false,
   defaultService = "",
-  eyebrow = "Free estimate",
-  title = "Tell us about your space",
-  description = "We will follow up using the contact details you provide.",
-  buttonLabel = "Request my free estimate",
+  eyebrow = "Free quote",
+  title = "Tell Us What You Need",
+  description = "Share a few details, and we'll get back to you soon.",
+  buttonLabel = "Get My Free Quote",
   showNotes = true,
 }: {
   compact?: boolean;
@@ -33,7 +33,7 @@ export function QuoteForm({
     if (!form.checkValidity()) {
       form.reportValidity();
       setState("idle");
-      setMessage("Please complete all required fields and accept the contact permission before sending.");
+      setMessage("Please fill out all required fields and check the contact permission box.");
       return;
     }
 
@@ -45,7 +45,7 @@ export function QuoteForm({
       const formEndpoint = process.env.NEXT_PUBLIC_FORM_ENDPOINT;
       if (!formEndpoint) {
         setState("preview");
-        setMessage("This public preview is for layout testing. Email delivery will be enabled on the server-hosted version.");
+        setMessage("This preview is for layout testing. Email delivery will be turned on when the site moves to its final host.");
         return;
       }
 
@@ -62,14 +62,14 @@ export function QuoteForm({
         });
         const result = (await response.json()) as { message?: string; success?: boolean | string };
         if (!response.ok || result.success === false || result.success === "false") {
-          throw new Error(result.message || "We could not send your request.");
+          throw new Error(result.message || "We couldn't send your request.");
         }
         setState("success");
-        setMessage(result.message || "Thank you. Your estimate request was sent successfully.");
+        setMessage(result.message || "Thanks! We received your request and will be in touch soon.");
         form.reset();
       } catch (error) {
         setState("error");
-        setMessage(error instanceof Error ? error.message : "We could not send your request.");
+        setMessage(error instanceof Error ? error.message : "We couldn't send your request.");
       }
       return;
     }
@@ -81,13 +81,13 @@ export function QuoteForm({
         body: JSON.stringify(payload),
       });
       const result = (await response.json()) as { message?: string };
-      if (!response.ok) throw new Error(result.message || "We could not send your request.");
+      if (!response.ok) throw new Error(result.message || "We couldn't send your request.");
       setState("success");
-      setMessage(result.message || "Your request was sent successfully.");
+      setMessage(result.message || "Thanks! We received your request and will be in touch soon.");
       form.reset();
     } catch (error) {
       setState("error");
-      setMessage(error instanceof Error ? error.message : "We could not send your request.");
+      setMessage(error instanceof Error ? error.message : "We couldn't send your request.");
     }
   }
 
@@ -106,35 +106,35 @@ export function QuoteForm({
         </div>
 
         <div className={compact ? "grid gap-4" : "grid gap-4 sm:grid-cols-2"}>
-          <Field label="Full name" name="name" placeholder="Your full name" autoComplete="name" required />
-          <Field label="Phone" name="phone" type="tel" placeholder="(407) 555-0123" autoComplete="tel" required />
+          <Field label="Full Name" name="name" placeholder="Your full name" autoComplete="name" required />
+          <Field label="Phone Number" name="phone" type="tel" placeholder="(407) 555-0123" autoComplete="tel" required />
         </div>
         <div className={compact ? "grid gap-4" : "grid gap-4 sm:grid-cols-2"}>
-          <Field label="Email" name="email" type="email" placeholder="you@example.com" autoComplete="email" required />
+          <Field label="Email Address" name="email" type="email" placeholder="you@example.com" autoComplete="email" required />
           <Field label="Property Address" name="location" placeholder="123 Main St, Orlando, FL" autoComplete="street-address" required />
         </div>
 
         <div className={compact ? "grid gap-4" : "grid gap-4 sm:grid-cols-2"}>
           <label className="grid gap-2 text-sm font-semibold text-ink">
-            Service
+            Service Needed
             <select name="service" defaultValue={defaultService} required className="form-control">
               <option value="" disabled>Select a service</option>
               {services.map((service) => <option key={service.slug} value={service.title}>{service.title}</option>)}
             </select>
           </label>
-          <Field label="Approx. square footage" name="squareFeet" type="number" placeholder="Optional" min="1" max="100000" />
+          <Field label="Approximate Square Footage" name="squareFeet" type="number" placeholder="Optional" min="1" max="100000" />
         </div>
 
         {showNotes && (
           <label className="grid gap-2 text-sm font-semibold text-ink">
-            Notes <span className="font-normal text-slate-500">(optional)</span>
-            <textarea name="notes" rows={compact ? 3 : 4} maxLength={1500} className="form-control resize-y" placeholder="Timing, rooms, priorities, or anything else we should know." />
+            Anything Else We Should Know? <span className="font-normal text-slate-500">(optional)</span>
+            <textarea name="notes" rows={compact ? 3 : 4} maxLength={1500} className="form-control resize-y" placeholder="Tell us about timing, rooms, priorities, or special requests." />
           </label>
         )}
 
         <label className="flex items-start gap-3 text-xs leading-5 text-slate-600">
           <input name="consent" value="accepted" type="checkbox" required className="mt-1 h-4 w-4 accent-brand" />
-          <span>I agree that CleanHive may contact me about this estimate. See the <Link className="font-semibold text-brand underline" href="/privacy-policy">Privacy Policy</Link>.</span>
+          <span>I agree to be contacted about my quote request. See our <Link className="font-semibold text-brand underline" href="/privacy-policy">Privacy Policy</Link>.</span>
         </label>
 
         <button type="submit" disabled={state === "sending"} className="button-gold min-h-12 justify-center disabled:cursor-wait disabled:opacity-70">

@@ -9,9 +9,9 @@ const isLocal = baseUrl.includes("localhost") || baseUrl.includes("127.0.0.1");
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: { default: "CleanHive Company | Cleaning Services in Central Florida", template: "%s | CleanHive Company" },
+  title: { default: "Clean Hive Company | Cleaning Services in Central Florida", template: "%s | Clean Hive Company" },
   description: siteConfig.description,
-  openGraph: { title: "CleanHive Company", description: siteConfig.description, type: "website", locale: "en_US" },
+  openGraph: { title: "Clean Hive Company", description: siteConfig.description, type: "website", locale: "en_US" },
   robots: { index: !isLocal, follow: !isLocal },
 };
 

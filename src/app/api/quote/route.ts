@@ -38,19 +38,19 @@ function escapeHtml(value: string) {
 export async function POST(request: NextRequest) {
   const forwarded = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
   const clientKey = forwarded || "local";
-  if (isRateLimited(clientKey)) return NextResponse.json({ message: "Too many attempts. Please wait a few minutes and try again." }, { status: 429 });
+  if (isRateLimited(clientKey)) return NextResponse.json({ message: "You've sent several requests. Please wait a few minutes and try again." }, { status: 429 });
 
   let body: unknown;
-  try { body = await request.json(); } catch { return NextResponse.json({ message: "Invalid request." }, { status: 400 }); }
+  try { body = await request.json(); } catch { return NextResponse.json({ message: "Something went wrong. Please refresh the page and try again." }, { status: 400 }); }
 
   const parsed = quoteSchema.safeParse(body);
-  if (!parsed.success) return NextResponse.json({ message: "Please review the required fields and try again." }, { status: 400 });
+  if (!parsed.success) return NextResponse.json({ message: "Please check the required fields and try again." }, { status: 400 });
   if (parsed.data.company) return NextResponse.json({ message: "Request received." });
 
   const { SMTP_HOST, SMTP_PORT, SMTP_SECURE, SMTP_USER, SMTP_PASS, QUOTE_FROM_EMAIL, QUOTE_TO_EMAIL } = process.env;
   if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !QUOTE_FROM_EMAIL || !QUOTE_TO_EMAIL) {
     console.error("Quote email is not configured. Copy .env.example to .env.local and set the SMTP values.");
-    return NextResponse.json({ message: "Email delivery is not configured yet. Please call us instead." }, { status: 503 });
+    return NextResponse.json({ message: "Online requests aren't available right now. Please call us instead." }, { status: 503 });
   }
 
   const quote = parsed.data;
@@ -77,9 +77,9 @@ export async function POST(request: NextRequest) {
       text: lines.join("\n"),
       html: `<div style="font-family:Arial,sans-serif;line-height:1.6;color:#1a1a2e"><h1 style="color:#02566a">New CleanHive estimate request</h1><p><strong>Request ID:</strong> ${requestId}</p><table cellpadding="8" cellspacing="0" style="border-collapse:collapse"><tr><td><strong>Name</strong></td><td>${escapeHtml(quote.name)}</td></tr><tr><td><strong>Phone</strong></td><td>${escapeHtml(quote.phone)}</td></tr><tr><td><strong>Email</strong></td><td>${escapeHtml(quote.email)}</td></tr><tr><td><strong>Property</strong></td><td>${escapeHtml(quote.location)}</td></tr><tr><td><strong>Service</strong></td><td>${escapeHtml(quote.service)}</td></tr><tr><td><strong>Approx. sq. ft.</strong></td><td>${escapeHtml(String(quote.squareFeet || "Not provided"))}</td></tr></table><h2 style="color:#02566a">Notes</h2><p>${escapeHtml(quote.notes || "None").replace(/\n/g, "<br>")}</p></div>`,
     });
-    return NextResponse.json({ message: "Thank you. Your estimate request was sent successfully." });
+    return NextResponse.json({ message: "Thanks! We received your request and will be in touch soon." });
   } catch (error) {
     console.error(`Quote email failed (${requestId})`, error instanceof Error ? error.message : "Unknown error");
-    return NextResponse.json({ message: "We could not send your request right now. Please call us instead." }, { status: 502 });
+    return NextResponse.json({ message: "We couldn't send your request right now. Please call us instead." }, { status: 502 });
   }
 }

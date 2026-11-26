@@ -4,7 +4,7 @@ export const siteConfig = {
   name: "CleanHive Company",
   shortName: "CleanHive",
   description:
-    "Residential and commercial cleaning services for homes and businesses across Central Florida.",
+    "Reliable home and business cleaning across Central Florida.",
   testPhoneDisplay: "+1 (863) 317-0165",
   testPhoneHref: "+18633170165",
   productionPhoneDisplay: "+1 (407) 867-8938",
@@ -45,49 +45,49 @@ export const services = [
   {
     slug: "residential-cleaning",
     title: "Residential Cleaning",
-    short: "Routine care that keeps your home comfortable, tidy, and ready for everyday life.",
+    short: "Reliable routine cleaning that keeps your home fresh, comfortable, and ready for everyday life.",
     description:
-      "Regular cleaning offers consistent maintenance of your home. This service includes dusting, vacuuming, mopping, and wiping surfaces, ensuring your space remains clean and comfortable throughout the week.",
+      "Keep your home fresh and comfortable with reliable routine cleaning. We dust, vacuum, mop, and wipe down surfaces so your space stays ready for everyday life.",
     image: assetPath("/images/services/residential.jpg"),
   },
   {
     slug: "deep-cleaning",
     title: "Deep Cleaning",
-    short: "Detailed attention for buildup, overlooked areas, and spaces that need a fresh reset.",
+    short: "A detailed top-to-bottom clean for buildup, missed spots, and spaces that need a fresh start.",
     description:
-      "A deep cleaning service provides a thorough cleaning of every corner of your space, targeting areas often missed in regular cleanings. It includes dusting, scrubbing, and disinfecting, leaving your home spotless.",
+      "Need a full reset? We tackle buildup and commonly missed areas with detailed dusting, scrubbing, and disinfecting to leave your home feeling fresh again.",
     image: assetPath("/images/services/deep-cleaning.png"),
   },
   {
     slug: "move-in-cleaning",
     title: "Move-In Cleaning",
-    short: "Start in a space that feels clean, welcoming, and ready for your belongings.",
+    short: "Move into a home that feels fresh, welcoming, and ready for you.",
     description:
-      "Move-in cleaning ensures your new home is clean and ready for you. It involves cleaning all surfaces, floors, and hidden areas, including appliances and cabinets, to give you a fresh start in your new place.",
+      "Start fresh in your new home. We clean floors, surfaces, appliances, cabinets, and other often-overlooked areas before you settle in.",
     image: assetPath("/images/services/move-in.png"),
   },
   {
     slug: "move-out-cleaning",
     title: "Move-Out Cleaning",
-    short: "Leave the property refreshed for its next resident, walkthrough, or handoff.",
+    short: "Leave your old place clean and ready for the next resident or final walkthrough.",
     description:
-      "Move-out cleaning focuses on leaving your old home in pristine condition for the next residents. This service includes cleaning the entire house, including floors, windows, and appliances, ensuring everything is spotless.",
+      "Leave your old place clean and ready for the next resident, final walkthrough, or handoff. We take care of floors, windows, appliances, and more.",
     image: assetPath("/images/services/move-out.webp"),
   },
   {
     slug: "commercial-cleaning",
     title: "Commercial Cleaning",
-    short: "Flexible cleaning support for offices, shared areas, and commercial environments.",
+    short: "Flexible cleaning for offices, shared spaces, and other commercial properties.",
     description:
-      "Commercial cleaning caters to offices and business spaces. It includes cleaning and sanitizing workspaces, bathrooms, floors, and common areas to create a hygienic environment for employees and visitors.",
+      "Keep your workplace clean and welcoming. We clean and sanitize offices, restrooms, floors, common areas, and other high-use spaces.",
     image: assetPath("/images/services/commercial.webp"),
   },
   {
     slug: "apartment-turnover",
     title: "Apartment Turnover",
-    short: "Prepare rental units for the next tenant with a focused, efficient reset.",
+    short: "Get your rental clean, refreshed, and ready for the next tenant.",
     description:
-      "Apartment turnover cleaning prepares rental properties for new tenants. It includes deep cleaning of every room, sanitizing bathrooms, kitchens, and floors, ensuring the apartment is spotless and move-in ready.",
+      "Get your rental ready for the next tenant. We deep clean kitchens, bathrooms, floors, and living areas for a smooth, stress-free turnover.",
     image: assetPath("/images/services/turnover.webp"),
   },
 ] as const;

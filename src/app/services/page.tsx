@@ -6,7 +6,7 @@ import { services } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cleaning Services",
-  description: "Explore residential, deep, move-in, move-out, commercial, and apartment turnover cleaning services in Central Florida.",
+  description: "Home, business, move-in, move-out, deep cleaning, and apartment turnover services across Central Florida.",
 };
 
 export default function ServicesPage() {
@@ -15,7 +15,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Our Cleaning Services"
-        description="Comprehensive cleaning solutions tailored to your specific needs, delivered by our team of trained professionals."
+        description="Cleaning that fits your home, business, and schedule."
         cta={false}
         compact
       />
@@ -29,7 +29,7 @@ export default function ServicesPage() {
               <div className="flex flex-col justify-center p-8 md:p-12">
                 <h2 className="text-3xl font-bold md:text-4xl">{service.slug === "apartment-turnover" ? "Apartment Turnover Cleaning" : service.title}</h2>
                 <p className="mt-5 text-lg leading-8 text-slate-600">{service.description}</p>
-                <Link href="/contact#quote-form" className="button-gold mt-7 self-start">Get a quote</Link>
+                <Link href="/contact#quote-form" className="button-gold mt-7 self-start">Get a Free Quote</Link>
               </div>
             </article>
           ))}

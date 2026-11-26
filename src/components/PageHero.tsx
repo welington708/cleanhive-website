@@ -7,7 +7,7 @@ export function PageHero({ eyebrow, title, description, cta = true, compact = fa
         <p className="eyebrow text-gold">{eyebrow}</p>
         <h1 className={`mx-auto mt-4 max-w-4xl font-bold leading-tight ${compact ? "text-4xl md:text-5xl" : "text-4xl md:text-6xl"}`}>{title}</h1>
         {description && <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/75">{description}</p>}
-        {cta && <Link href="/contact#quote-form" className="button-gold mt-8">Get a free estimate</Link>}
+        {cta && <Link href="/contact#quote-form" className="button-gold mt-8">Get a Free Quote</Link>}
       </div>
     </section>
   );

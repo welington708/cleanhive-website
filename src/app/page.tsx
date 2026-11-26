@@ -12,23 +12,23 @@ export default function HomePage() {
           <div className="lg:pt-5">
             <div className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white/80">Excellent on Google · {siteConfig.testPhoneDisplay} · Serving Central Florida</div>
             <h1 className="mt-6 text-5xl font-bold leading-[1.04] tracking-tight md:text-7xl">Florida&apos;s Most Trusted <span className="text-gold">Cleaning Service</span></h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">Leave the stress of cleaning to Clean Hive Company and see how a spotless environment can transform your daily life.</p>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">Let us handle the cleaning so you can enjoy a fresh, comfortable space.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link className="button-gold" href="/services">Our Services</Link>
               <a className="button-outline" href={`tel:${siteConfig.testPhoneHref}`}>Call Now</a>
             </div>
-            <p className="mt-4 text-xs text-white/50">Local test contact. The company number will replace it before launch.</p>
+            <p className="mt-4 text-xs text-white/50">Test phone number. We&apos;ll replace it with the business line before launch.</p>
           </div>
-          <div id="quote-form"><QuoteForm compact title="Get a Free Quote" description="Join our list of satisfied clients today." buttonLabel="Get My Free Quote" /></div>
+          <div id="quote-form"><QuoteForm compact title="Get a Free Quote" description="Tell us what you need, and we&apos;ll take it from there." buttonLabel="Get My Free Quote" /></div>
         </div>
       </section>
 
       <section className="section-pad bg-cream">
         <div className="page-shell">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow">Cleaning that fits the moment</p>
-            <h2 className="mt-3 text-4xl font-bold md:text-5xl">From weekly upkeep to a complete reset</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">Choose the service that matches your space. We will confirm scope, priorities, and timing before work begins.</p>
+            <p className="eyebrow">Cleaning for every need</p>
+            <h2 className="mt-3 text-4xl font-bold md:text-5xl">From routine cleaning to a full reset</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">Choose the service that fits your space. We&apos;ll confirm the details and timing before we get started.</p>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
@@ -37,7 +37,7 @@ export default function HomePage() {
                 <div className="p-6">
                   <h3 className="text-xl font-bold">{service.title}</h3>
                   <p className="mt-3 leading-7 text-slate-600">{service.short}</p>
-                  <Link className="mt-5 inline-block font-bold text-brand" href={`/services#${service.slug}`}>Explore service →</Link>
+                  <Link className="mt-5 inline-block font-bold text-brand" href={`/services#${service.slug}`}>View service →</Link>
                 </div>
               </article>
             ))}
@@ -54,10 +54,10 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">Real work, visible results</p>
             <h2 className="mt-3 text-4xl font-bold md:text-5xl">Details make the difference</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">Our work gallery uses project photos supplied by CleanHive. As original high-resolution pairs become available, we will replace the current social-media exports.</p>
+            <p className="mt-5 text-lg leading-8 text-slate-600">From everyday buildup to easy-to-miss spots, we focus on the details that make your space feel truly clean.</p>
             <div className="mt-7 grid gap-4 sm:grid-cols-3">
               {[
-                ["01", "Clear scope"], ["02", "Personal follow-up"], ["03", "Careful finish"],
+                ["01", "Clear plan"], ["02", "Personal service"], ["03", "Detailed finish"],
               ].map(([number, label]) => <div key={number} className="rounded-2xl bg-cream p-4"><p className="text-2xl font-bold text-gold">{number}</p><p className="mt-1 text-sm font-bold">{label}</p></div>)}
             </div>
             <Link href="/our-work" className="button-gold mt-8">See our work</Link>
@@ -97,8 +97,8 @@ export default function HomePage() {
             <p className="eyebrow">Who we are</p>
             <h2 className="mt-3 text-4xl font-bold md:text-5xl">About Clean Hive Company</h2>
             <div className="mt-5 h-1 w-20 rounded-full bg-gold" />
-            <p className="mt-7 text-lg leading-8 text-slate-600">CleanHive is a local cleaning company serving homes, rentals, and businesses across Central Florida. Our goal is to make every service clear, thoughtful, and tailored to the space.</p>
-            <p className="mt-4 text-lg leading-8 text-slate-600">We believe in trust, transparency, and the difference a carefully cleaned environment can make in everyday life.</p>
+            <p className="mt-7 text-lg leading-8 text-slate-600">Clean Hive is a local company serving homes, rentals, and businesses across Central Florida. Every cleaning plan is built around your space and your needs.</p>
+            <p className="mt-4 text-lg leading-8 text-slate-600">We believe in reliable service, clear communication, and the comfort of coming back to a clean space.</p>
             <Link href="/about" className="button-gold mt-8">Learn more about us</Link>
           </div>
         </div>
@@ -109,7 +109,7 @@ export default function HomePage() {
           <p className="eyebrow">Where we work</p>
           <h2 className="mt-3 text-4xl font-bold md:text-5xl">Proudly Serving Central Florida</h2>
           <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-gold" />
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-600">From Orlando to the beautiful coastal towns, we bring our cleaning services directly to you.</p>
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-600">We serve homes and businesses from Orlando to the coast.</p>
           <div className="mx-auto mt-10 flex max-w-5xl flex-wrap justify-center gap-3">
             {serviceAreas.map((area) => (
               <Link key={area.city} href="/contact#quote-form" className="flex w-full min-w-0 items-center justify-center gap-2 rounded-full border border-[#ded7ca] bg-white px-6 py-3.5 font-semibold text-ink shadow-sm transition hover:-translate-y-0.5 hover:border-gold hover:shadow-md sm:w-auto">
@@ -125,8 +125,8 @@ export default function HomePage() {
       <section className="section-pad bg-cream text-center">
         <div className="page-shell">
           <p className="eyebrow">Ready when you are</p>
-          <h2 className="mx-auto mt-3 max-w-3xl text-4xl font-bold md:text-5xl">Tell us what needs cleaning. We will take it from there.</h2>
-          <Link className="button-gold mt-8" href="/contact#quote-form">Get a free estimate</Link>
+          <h2 className="mx-auto mt-3 max-w-3xl text-4xl font-bold md:text-5xl">Tell us what you need cleaned. We&apos;ll take it from there.</h2>
+          <Link className="button-gold mt-8" href="/contact#quote-form">Get a free quote</Link>
         </div>
       </section>
     </>
