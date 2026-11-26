@@ -28,10 +28,17 @@ export function QuoteForm({
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setState("sending");
-    setMessage("");
 
     const form = event.currentTarget;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      setState("idle");
+      setMessage("Please complete all required fields and accept the contact permission before sending.");
+      return;
+    }
+
+    setState("sending");
+    setMessage("");
     const payload = Object.fromEntries(new FormData(form).entries());
 
     if (process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true") {
@@ -104,7 +111,7 @@ export function QuoteForm({
         </div>
         <div className={compact ? "grid gap-4" : "grid gap-4 sm:grid-cols-2"}>
           <Field label="Email" name="email" type="email" placeholder="you@example.com" autoComplete="email" required />
-          <Field label="Property address or city" name="location" placeholder="Orlando, FL" autoComplete="street-address" required />
+          <Field label="Property Address" name="location" placeholder="123 Main St, Orlando, FL" autoComplete="street-address" required />
         </div>
 
         <div className={compact ? "grid gap-4" : "grid gap-4 sm:grid-cols-2"}>
