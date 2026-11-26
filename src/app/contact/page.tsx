@@ -36,7 +36,7 @@ export default function ContactPage() {
                 </div>
                 <div className="card p-7">
                   <p className="eyebrow">Business Hours</p>
-                  <p className="mt-2 text-lg font-bold">Monday – Saturday</p>
+                  <p className="mt-2 text-lg font-bold">Monday – Friday</p>
                   <p className="mt-1 text-slate-600">8:00 AM – 6:00 PM</p>
                 </div>
               </div>
