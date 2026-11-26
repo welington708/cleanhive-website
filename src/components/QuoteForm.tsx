@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
+import { PreferredDatePicker } from "@/components/PreferredDatePicker";
 import { services, siteConfig } from "@/lib/site";
 
 type FormState = "idle" | "sending" | "success" | "error" | "preview";
@@ -133,11 +134,7 @@ export function QuoteForm({
           <Field label="Approximate Square Footage" name="squareFeet" type="number" placeholder="Optional" min="1" max="100000" />
         </div>
 
-        <label className="grid gap-2 text-sm font-semibold text-ink">
-          <span>Preferred Cleaning Date <span className="font-normal text-slate-500">(optional)</span></span>
-          <input name="preferredDate" type="date" className="form-control" />
-          <span className="font-normal text-xs text-slate-500">Choose the date that works best for you. We’ll confirm availability when we follow up.</span>
-        </label>
+        <PreferredDatePicker />
 
         {showNotes && (
           <label className="grid gap-2 text-sm font-semibold text-ink">
