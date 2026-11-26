@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { GoogleMap } from "@/components/GoogleMap";
 import { PageHero } from "@/components/PageHero";
 import { QuoteForm } from "@/components/QuoteForm";
 import { serviceAreas } from "@/lib/site";
@@ -24,8 +25,11 @@ export default function ServiceAreasPage() {
               </article>
             ))}
           </div>
-          <div id="quote-form" className="mx-auto mt-14 max-w-4xl scroll-mt-28">
-            <QuoteForm eyebrow="Free quote" title="Book Your Clean Today" description="Fill out the form below and we'll get back to you with a free quote." buttonLabel="Get My Free Quote" showNotes={false} />
+          <div className="mt-14 grid items-stretch gap-8 lg:grid-cols-2">
+            <GoogleMap className="min-h-[520px]" />
+            <div id="quote-form" className="scroll-mt-28">
+              <QuoteForm eyebrow="Free quote" title="Book Your Clean Today" description="Fill out the form below and we'll get back to you with a free quote." buttonLabel="Get My Free Quote" showNotes={false} />
+            </div>
           </div>
         </div>
       </section>
