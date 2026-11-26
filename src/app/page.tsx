@@ -10,16 +10,16 @@ export default function HomePage() {
       <section className="brand-pattern overflow-hidden bg-brand text-white">
         <div className="page-shell grid items-start gap-10 py-10 lg:grid-cols-[1.08fr_.92fr] lg:py-14">
           <div className="lg:pt-5">
-            <div className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white/80">Serving homes and businesses across Central Florida</div>
-            <h1 className="mt-6 text-5xl font-bold leading-[1.04] tracking-tight md:text-7xl">A cleaner space.<br /><span className="text-gold">More room to live.</span></h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">Reliable cleaning tailored to your home, move, rental, or workplace — with a simple estimate process and personal follow-up.</p>
+            <div className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white/80">Excellent on Google · {siteConfig.testPhoneDisplay} · Serving Central Florida</div>
+            <h1 className="mt-6 text-5xl font-bold leading-[1.04] tracking-tight md:text-7xl">Florida&apos;s Most Trusted <span className="text-gold">Cleaning Service</span></h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">Leave the stress of cleaning to Clean Hive Company and see how a spotless environment can transform your daily life.</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link className="button-gold" href="#quote-form">Request an estimate</Link>
-              <a className="button-outline" href={`tel:${siteConfig.testPhoneHref}`}>Call {siteConfig.testPhoneDisplay}</a>
+              <Link className="button-gold" href="/services">Our Services</Link>
+              <a className="button-outline" href={`tel:${siteConfig.testPhoneHref}`}>Call Now</a>
             </div>
             <p className="mt-4 text-xs text-white/50">Local test contact. The company number will replace it before launch.</p>
           </div>
-          <div id="quote-form"><QuoteForm compact /></div>
+          <div id="quote-form"><QuoteForm compact title="Get a Free Quote" description="Join our list of satisfied clients today." buttonLabel="Get My Free Quote" /></div>
         </div>
       </section>
 

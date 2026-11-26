@@ -35,8 +35,35 @@ export function QuoteForm({
     const payload = Object.fromEntries(new FormData(form).entries());
 
     if (process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true") {
-      setState("preview");
-      setMessage("This public preview is for layout testing. Email delivery will be enabled on the server-hosted version.");
+      const formEndpoint = process.env.NEXT_PUBLIC_FORM_ENDPOINT;
+      if (!formEndpoint) {
+        setState("preview");
+        setMessage("This public preview is for layout testing. Email delivery will be enabled on the server-hosted version.");
+        return;
+      }
+
+      try {
+        const response = await fetch(formEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            ...payload,
+            _subject: "New CleanHive estimate request",
+            _template: "table",
+            _url: window.location.href,
+          }),
+        });
+        const result = (await response.json()) as { message?: string; success?: boolean | string };
+        if (!response.ok || result.success === false || result.success === "false") {
+          throw new Error(result.message || "We could not send your request.");
+        }
+        setState("success");
+        setMessage(result.message || "Thank you. Your estimate request was sent successfully.");
+        form.reset();
+      } catch (error) {
+        setState("error");
+        setMessage(error instanceof Error ? error.message : "We could not send your request.");
+      }
       return;
     }
 

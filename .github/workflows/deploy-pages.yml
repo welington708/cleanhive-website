@@ -29,6 +29,7 @@ jobs:
           GITHUB_PAGES: "true"
           NEXT_PUBLIC_BASE_PATH: /cleanhive-website
           NEXT_PUBLIC_STATIC_PREVIEW: "true"
+          NEXT_PUBLIC_FORM_ENDPOINT: https://formsubmit.co/ajax/weligton708@gmail.com
           NEXT_PUBLIC_SITE_URL: https://welington708.github.io/cleanhive-website
         run: |
           mv src/app/api .pages-api-backup
