@@ -54,7 +54,6 @@ export function QuoteForm({
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify({
-            Mensagem: "Olá! Uma nova solicitação de cotação acaba de chegar pelo site da Clean Hive Company. Entre em contato com o cliente o quanto antes.",
             Nome: payload.name,
             Telefone: payload.phone,
             Email: payload.email,
