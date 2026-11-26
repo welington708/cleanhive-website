@@ -3,6 +3,7 @@
 :root {
   --brand: #02566a;
   --brand-dark: #013e4d;
+  --logo-green: #004961;
   --gold: #eab75e;
   --cream: #f7f5f0;
   --ink: #1a1a2e;
@@ -11,6 +12,7 @@
 @theme inline {
   --color-brand: var(--brand);
   --color-brand-dark: var(--brand-dark);
+  --color-logo-green: var(--logo-green);
   --color-gold: var(--gold);
   --color-cream: var(--cream);
   --color-ink: var(--ink);

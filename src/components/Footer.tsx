@@ -5,7 +5,7 @@ import { assetPath, navigation, serviceAreas, siteConfig } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="bg-brand text-white">
+    <footer className="bg-logo-green text-white">
       <div className="page-shell grid gap-10 py-14 md:grid-cols-3">
         <div>
           <Image src={assetPath("/images/brand/logo.jpeg")} alt="CleanHive Company" width={70} height={68} className="h-14 w-14 rounded-xl object-cover" />

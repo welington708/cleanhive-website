@@ -17,7 +17,7 @@ export function Header() {
   const isActive = (href: string) => normalizedPathname === (href.replace(/\/+$/, "") || "/");
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-brand/95 text-white shadow-lg backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-logo-green text-white shadow-lg">
       <div className="page-shell flex h-20 items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-3" aria-label="CleanHive home">
           <Image
@@ -66,7 +66,7 @@ export function Header() {
       </div>
 
       {open && (
-        <nav id="mobile-navigation" className="border-t border-white/10 bg-brand px-5 pb-6 pt-3 lg:hidden">
+        <nav id="mobile-navigation" className="border-t border-white/10 bg-logo-green px-5 pb-6 pt-3 lg:hidden">
           <div className="mx-auto flex max-w-6xl flex-col">
             {navigation.map((item) => {
               const active = isActive(item.href);
