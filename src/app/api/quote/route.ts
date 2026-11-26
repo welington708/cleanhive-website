@@ -62,20 +62,33 @@ export async function POST(request: NextRequest) {
     auth: { user: SMTP_USER, pass: SMTP_PASS },
   });
 
+  const intro = "Olá! Uma nova solicitação de cotação acaba de chegar pelo site da Clean Hive Company. Entre em contato com o cliente o quanto antes.";
+  const squareFeetLabel = quote.squareFeet ? `${quote.squareFeet} sq. ft.` : "Não informado";
   const lines = [
-    `New CleanHive estimate request (${requestId})`, "", `Name: ${quote.name}`, `Phone: ${quote.phone}`,
-    `Email: ${quote.email}`, `Property: ${quote.location}`, `Service: ${quote.service}`,
-    `Approx. sq. ft.: ${quote.squareFeet || "Not provided"}`, "", "Notes:", quote.notes || "None",
+    "NOVA SOLICITAÇÃO DE COTAÇÃO", "", intro, "", `Nome: ${quote.name}`, `Telefone: ${quote.phone}`,
+    `E-mail: ${quote.email}`, `Endereço do imóvel: ${quote.location}`, `Serviço: ${quote.service}`,
+    `Área aproximada: ${squareFeetLabel}`, `Observações: ${quote.notes || "Nenhuma"}`,
+    "", `ID da solicitação: ${requestId}`,
   ];
+
+  const emailRows = [
+    ["Nome", quote.name],
+    ["Telefone", quote.phone],
+    ["E-mail", quote.email],
+    ["Endereço do imóvel", quote.location],
+    ["Serviço", quote.service],
+    ["Área aproximada", squareFeetLabel],
+    ["Observações", quote.notes || "Nenhuma"],
+  ].map(([label, value], index) => `<tr style="background:${index % 2 ? "#f8fafc" : "#ffffff"}"><td style="width:34%;padding:12px 14px;border-bottom:1px solid #e5e7eb;color:#475569;font-weight:700">${label}</td><td style="padding:12px 14px;border-bottom:1px solid #e5e7eb;color:#1a1a2e">${escapeHtml(value)}</td></tr>`).join("");
 
   try {
     await transport.sendMail({
       from: QUOTE_FROM_EMAIL,
       to: QUOTE_TO_EMAIL,
       replyTo: quote.email,
-      subject: `New Cleaning Quote — ${quote.service} — ${quote.location}`,
+      subject: `Nova solicitação de cotação | ${quote.service} | ${quote.location}`,
       text: lines.join("\n"),
-      html: `<div style="font-family:Arial,sans-serif;line-height:1.6;color:#1a1a2e"><h1 style="color:#02566a">New CleanHive estimate request</h1><p><strong>Request ID:</strong> ${requestId}</p><table cellpadding="8" cellspacing="0" style="border-collapse:collapse"><tr><td><strong>Name</strong></td><td>${escapeHtml(quote.name)}</td></tr><tr><td><strong>Phone</strong></td><td>${escapeHtml(quote.phone)}</td></tr><tr><td><strong>Email</strong></td><td>${escapeHtml(quote.email)}</td></tr><tr><td><strong>Property</strong></td><td>${escapeHtml(quote.location)}</td></tr><tr><td><strong>Service</strong></td><td>${escapeHtml(quote.service)}</td></tr><tr><td><strong>Approx. sq. ft.</strong></td><td>${escapeHtml(String(quote.squareFeet || "Not provided"))}</td></tr></table><h2 style="color:#02566a">Notes</h2><p>${escapeHtml(quote.notes || "None").replace(/\n/g, "<br>")}</p></div>`,
+      html: `<div style="margin:0;background:#f1f5f9;padding:32px 16px;font-family:Arial,sans-serif;line-height:1.6;color:#1a1a2e"><div style="max-width:680px;margin:0 auto;overflow:hidden;border-radius:18px;background:#ffffff;box-shadow:0 10px 30px rgba(15,23,42,.10)"><div style="background:#004961;padding:26px 30px"><p style="margin:0 0 6px;color:#eab75e;font-size:12px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase">Clean Hive Company</p><h1 style="margin:0;color:#ffffff;font-size:26px;line-height:1.25">Nova solicitação de cotação</h1></div><div style="padding:28px 30px"><div style="margin-bottom:24px;border-left:4px solid #eab75e;border-radius:8px;background:#fff8e8;padding:16px 18px"><p style="margin:0;color:#1a1a2e;font-size:16px"><strong>Olá!</strong> Uma nova solicitação de cotação acaba de chegar pelo site da Clean Hive Company. <strong>Entre em contato com o cliente o quanto antes.</strong></p></div><h2 style="margin:0 0 14px;color:#004961;font-size:19px">Dados do cliente</h2><table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border:1px solid #e5e7eb;border-radius:10px;border-collapse:separate;border-spacing:0;overflow:hidden">${emailRows}</table><p style="margin:24px 0 0;color:#64748b;font-size:12px">ID da solicitação: ${requestId}</p></div></div></div>`,
     });
     return NextResponse.json({ message: "Thanks! We received your request and will be in touch soon." });
   } catch (error) {
