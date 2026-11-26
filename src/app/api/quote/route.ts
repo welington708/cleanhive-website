@@ -10,6 +10,7 @@ const quoteSchema = z.object({
   email: z.email().max(200),
   location: z.string().trim().min(2).max(250),
   service: z.string().trim().min(2).max(100),
+  preferredDate: z.string().trim().regex(/^\d{4}-\d{2}-\d{2}$/).optional().or(z.literal("")).default(""),
   squareFeet: z.union([z.string().trim().max(10), z.number()]).optional(),
   notes: z.string().trim().max(1500).optional().default(""),
   consent: z.literal("accepted"),
@@ -64,9 +65,12 @@ export async function POST(request: NextRequest) {
 
   const intro = "Olá! Uma nova solicitação de cotação acaba de chegar pelo site da Clean Hive Company. Entre em contato com o cliente o quanto antes.";
   const squareFeetLabel = quote.squareFeet ? `${quote.squareFeet} sq. ft.` : "Não informado";
+  const [preferredYear, preferredMonth, preferredDay] = quote.preferredDate.split("-");
+  const preferredDateLabel = preferredYear && preferredMonth && preferredDay ? `${preferredMonth}/${preferredDay}/${preferredYear}` : "Não informada";
   const lines = [
     "NOVA SOLICITAÇÃO DE COTAÇÃO", "", intro, "", `Nome: ${quote.name}`, `Telefone: ${quote.phone}`,
     `E-mail: ${quote.email}`, `Endereço do imóvel: ${quote.location}`, `Serviço: ${quote.service}`,
+    `Data preferencial para a limpeza: ${preferredDateLabel}`,
     `Área aproximada: ${squareFeetLabel}`, `Observações: ${quote.notes || "Nenhuma"}`,
     "", `ID da solicitação: ${requestId}`,
   ];
@@ -77,6 +81,7 @@ export async function POST(request: NextRequest) {
     ["E-mail", quote.email],
     ["Endereço do imóvel", quote.location],
     ["Serviço", quote.service],
+    ["Data preferencial para a limpeza", preferredDateLabel],
     ["Área aproximada", squareFeetLabel],
     ["Observações", quote.notes || "Nenhuma"],
   ].map(([label, value], index) => `<tr style="background:${index % 2 ? "#f8fafc" : "#ffffff"}"><td style="width:34%;padding:12px 14px;border-bottom:1px solid #e5e7eb;color:#475569;font-weight:700">${label}</td><td style="padding:12px 14px;border-bottom:1px solid #e5e7eb;color:#1a1a2e">${escapeHtml(value)}</td></tr>`).join("");

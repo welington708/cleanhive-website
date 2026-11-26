@@ -59,6 +59,7 @@ export function QuoteForm({
             Email: payload.email,
             "Endereço do imóvel": payload.location,
             Serviço: payload.service,
+            "Data preferencial para a limpeza": formatPreferredDate(payload.preferredDate),
             "Área aproximada (sq. ft.)": payload.squareFeet || "Não informado",
             Observações: payload.notes || "Nenhuma",
             _replyto: payload.email,
@@ -132,6 +133,12 @@ export function QuoteForm({
           <Field label="Approximate Square Footage" name="squareFeet" type="number" placeholder="Optional" min="1" max="100000" />
         </div>
 
+        <label className="grid gap-2 text-sm font-semibold text-ink">
+          <span>Preferred Cleaning Date <span className="font-normal text-slate-500">(optional)</span></span>
+          <input name="preferredDate" type="date" className="form-control" />
+          <span className="font-normal text-xs text-slate-500">Choose the date that works best for you. We’ll confirm availability when we follow up.</span>
+        </label>
+
         {showNotes && (
           <label className="grid gap-2 text-sm font-semibold text-ink">
             Anything Else We Should Know? <span className="font-normal text-slate-500">(optional)</span>
@@ -156,6 +163,12 @@ export function QuoteForm({
       </form>
     </div>
   );
+}
+
+function formatPreferredDate(value: FormDataEntryValue | undefined) {
+  if (typeof value !== "string" || !value) return "Não informada";
+  const [year, month, day] = value.split("-");
+  return year && month && day ? `${month}/${day}/${year}` : value;
 }
 
 function Field({ label, name, type = "text", ...props }: { label: string; name: string; type?: string; [key: string]: string | boolean | undefined }) {
